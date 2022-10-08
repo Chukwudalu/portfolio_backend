@@ -1,7 +1,5 @@
 const nodemailer = require('nodemailer')
 const mailGun = require('nodemailer-mailgun-transport');
-const { htmlToText } = require('html-to-text');
-const { text } = require('express');
 
 const auth = {
     auth: {
@@ -14,6 +12,7 @@ const transporter = nodemailer.createTransport(mailGun(auth));
 
 exports.sendEmail = (req, res, next) => {
     // const name = req.body.firstName + ' ' + req.body.lastName;
+    console.log(req.body)
     const email = req.body.email;
     const phone = req.body.phone;
     const message = `${req.body.message}. My phone number is ${phone} and my name is ${req.body.firstName}`;
